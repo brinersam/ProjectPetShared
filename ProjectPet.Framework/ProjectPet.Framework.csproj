@@ -1,23 +1,32 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<PackageId>Brinersam.ProjectPet.Framework</PackageId>
+		<Version>1.0.0</Version>
+		<Authors>ProjectPet</Authors>
+		<Company>ProjectPet</Company>
+		<PackageDescription>Shared framework project</PackageDescription>
+		<RepositoryUrl>https://github.com/brinersam/ProjectPetShared</RepositoryUrl>
+	</PropertyGroup>
+
+
+
 
 	<ItemGroup>
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
-	  <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
 		<PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="2.2.0" />
 	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ProjectPet.Core\ProjectPet.Core.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\ProjectPet.Core\ProjectPet.Core.csproj" />
+	</ItemGroup>
 
 </Project>
