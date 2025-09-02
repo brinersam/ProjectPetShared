@@ -1,6 +1,6 @@
 ﻿using ProjectPet.SharedKernel.ErrorClasses;
 
-namespace ProjectPet.Framework.Authorization;
+namespace ProjectPet.Framework.UserData;
 
 public class UserScopedData
 {

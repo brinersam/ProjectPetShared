@@ -1,27 +1,42 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ProjectPet.Framework.Authorization;
-
 public class PermissionPolicyProvider : IAuthorizationPolicyProvider
 {
     public Task<AuthorizationPolicy> GetDefaultPolicyAsync()
     {
-        return Task.FromResult<AuthorizationPolicy?>(new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build())!;
+        return Task.FromResult
+        (
+             new AuthorizationPolicyBuilder
+                 (
+                    JwtBearerDefaults.AuthenticationScheme,
+                    "SecretKey"
+                 )
+                 .RequireAuthenticatedUser()
+                 .Build()
+        );
     }
 
     public Task<AuthorizationPolicy?> GetFallbackPolicyAsync()
     {
-        return Task.FromResult<AuthorizationPolicy?>(null);
+        return Task.FromResult<AuthorizationPolicy>(null);
     }
 
     public Task<AuthorizationPolicy?> GetPolicyAsync(string policyName)
     {
-        if (String.IsNullOrWhiteSpace(policyName))
-            return Task.FromResult<AuthorizationPolicy>(null!)!;
+        if (string.IsNullOrWhiteSpace(policyName))
+            return Task.FromResult<AuthorizationPolicy>(null);
 
-        return Task.FromResult(new AuthorizationPolicyBuilder()
+        var policy = new AuthorizationPolicyBuilder
+            (
+                JwtBearerDefaults.AuthenticationScheme,
+                "SecretKey"
+            )
             .RequireAuthenticatedUser()
             .AddRequirements(new PermissionAttribute(policyName))
-            .Build())!;
+            .Build();
+
+        return Task.FromResult<AuthorizationPolicy?>(policy);
     }
 }
